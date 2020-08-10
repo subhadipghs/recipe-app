@@ -26,8 +26,8 @@ const Category = ({ text }) => {
 	return (
 		<Wrapper>
 			<div className="text">
-				category
-			</div>
+				search results
+			</div   >
 			<h1 className="category__name">
 				{text}
 			</h1>
@@ -35,4 +35,4 @@ const Category = ({ text }) => {
 	);
 }
 
-export default Category;
+export default Category; 

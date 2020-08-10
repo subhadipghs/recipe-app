@@ -1,20 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ThemeProvider } from 'styled-components';
-import './index.css';
-import App from './App';
-import theme from './utils/theme';
-import GlobalStyle from './utils/global';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux/index";
+import { ThemeProvider } from "styled-components";
+import theme from "./utils/theme";
+import GlobalStyle from "./utils/global";
+import App from "./App";
+import "./index.css";
 
 const jsx = (
 	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<App />
-			<GlobalStyle />
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<App />
+				<GlobalStyle />
+			</ThemeProvider>
+		</Provider>
 	</React.StrictMode>
-)
+);
 
-const root = document.getElementById('root');
+const root = document.getElementById("root");
 
 ReactDOM.render(jsx, root);
+

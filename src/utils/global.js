@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
 		--white-color: ${props => props.theme.colors.whiteColor};
 		--black-color: ${props => props.theme.colors.blackColor};
 		--ultimate-green: ${props => props.theme.colors.ultimateGreen};
+		--ultimate-green-theme: ${props => props.theme.colors.ultimateGreenTheme};
 		--main-background: ${props => props.theme.colors.mainBackground};
 		--box-shadow: ${props => props.theme.utils.boxShadow};
 		--border-radius: ${props => props.theme.utils.borderRadius};
@@ -26,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 16px;
 		font-weight: 400;
 		box-sizing: border-box;
-	}
+	}	
 
 	a, button {
 		cursor: pointer;

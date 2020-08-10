@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonWrapper = styled.button`
-	width: 6rem;
-	height: 2rem;
+	width: ${props => props.full ? "100%" : "6rem"};
+	height: 2.5rem;
+	font-size: 1.05rem;
 	border-radius: ${props => props.type === "pill" ? "2rem" : (
 		props.type === "block" ? (
 			"0.1rem"
@@ -11,15 +12,21 @@ const ButtonWrapper = styled.button`
 			"var(--border-radius)"
 		)
 	)};
-	color: ${props => props.outline ? "var(--white-color)" : "var(--black-color)"};
+	color: ${props => props.outline ? "var(--ultimate-green-theme)" : "var(--white-color)"};
 	background-color: ${props => props.outline ? "var(--black-color)" : "#00000000"};
-	border: ${props => props.outline ? "0.2rem solid var(--black-color)" : "none"};
+	border: 0.2rem solid var(--white-color);
+	transition: background-color 0.3s;
+	margin-bottom: 1rem;
+	&:hover {
+		background-color: var(--white-color);
+		color: var(--black-color);
+	}
 `;
 
 
-const Button = ({ text, type, outline, clicked, ...rest }) => {
+const Button = ({ text, type, full, outline, clicked, ...rest }) => {
 	return (
-		<ButtonWrapper type={type}  outline={outline} onClick={() => clicked()} {...rest}>
+		<ButtonWrapper full type={type} outline={outline} onClick={() => clicked()} {...rest}>
 			{text}
 		</ButtonWrapper>
 	)

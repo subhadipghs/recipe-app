@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const LayoutWrapper = styled.div`
 	padding: 3rem;
 	background-color: var(--main-background);
+	box-sizing: border-box;
+	min-height: 90vh;
 	background: ${props => `url(${props.theme.illustrations.two}) top -5rem right -10rem no-repeat, 
 		url(${props.theme.illustrations.three}) 6% 50% no-repeat,
 		url(${props.theme.illustrations.one}) -4% 110% no-repeat,

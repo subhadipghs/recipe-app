@@ -1,8 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
-import Layout from './components/UI/Layout/Layout';
-import Home from './pages/Home/Home';
-
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import Layout from "./components/UI/Layout/Layout";
+import Home from "./pages/Home/Home";
 
 function App() {
 	return (
@@ -11,7 +10,7 @@ function App() {
 				<Route path="/" component={Home} exact />
 			</Switch>
 		</Layout>
-	)
+	);
 }
 
 export default App;

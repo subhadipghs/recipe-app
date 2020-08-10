@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import iconFeatureSearch from '../../assets/Icons/feather-search.png';
+import InputBox from '../UI/Input/Input';
+import { connect } from 'react-redux';
+import { fetchRecipeApi } from "../../redux/actions/recipe";
+import { bindActionCreators } from "redux";
 
-const Wrapper = styled.div`
+const FormWrapper = styled.form`
 	border: none;
 	padding: 0.3rem;
 	display: flex;
@@ -33,27 +37,38 @@ const Icon = styled.img`
 	margin: 0.7rem 0 0 0.7rem;
 `;
 
-const Input = styled.input`
-	padding-left: 1rem;
-	padding-right: 1rem;
-	width: 80%;
-	font-size: 1.08rem;
-`;
 
+const Searchbar = (props) => {
 
-const Searchbar = ({ placeholder }) => {
+	const [query, setQuery] = useState("");
+
+	const search = (event) => {
+		event.preventDefault();
+		console.log(query);
+		props.fetchDataFromApi(query);
+	}
 	return (
-		<Wrapper>
+		<FormWrapper onSubmit={(e) => search(e)}>
 			<IconWrapper circle>
 				<Icon
 					src={iconFeatureSearch}
 				/>
 			</IconWrapper>
-			<Input
-				placeholder={placeholder}
+			<InputBox
+				name={props.name}
+				id={props.id}
+				placeholder={props.placeholder}
+				contain
+				onChange={(e) => setQuery(e.target.value)}
 			/>
-		</Wrapper>
+		</FormWrapper>
 	)
 }
 
-export default Searchbar;
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+	fetchDataFromApi: (query) => fetchRecipeApi(query)
+}, dispatch)
+
+
+export default connect(null, mapDispatchToProps)(Searchbar);
