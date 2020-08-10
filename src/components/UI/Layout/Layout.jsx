@@ -22,7 +22,7 @@ const LayoutWrapper = styled.div`
 const Layout = ({ children }) => {
 	return (
 		<LayoutWrapper>
-			<Router>
+			<Router basename="recipe-app">
 				{children}
 			</Router>
 		</LayoutWrapper>
