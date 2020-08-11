@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Layout from "../../components/UI/Layout/Layout";
@@ -9,6 +9,8 @@ import Error from "../../components/Error/Error";
 import Loader from "../../components/Loader/Loader";
 import { fetchRecipeApi } from "../../redux/actions/recipe";
 import { bindActionCreators } from "redux";
+
+const Cards = React.lazy(() => import("../../components/Card/Card"));
 
 const Flex = styled.div`
 	display: flex;
@@ -27,33 +29,29 @@ class Home extends React.PureComponent {
 			<Layout>
 				<Searchbar
 					name="searchbar"
-					placeholder="Search your favourite recipe"
+					placeholder="Search your favourite recipe... (Press Enter after typing)"
 				/>
 				<Flex justify="center" align="flex-start">
-					{count > 0 && data.length > 0 && <Category text="Results" />}
-					{loading === true ? (
-						<Loader />
-					) : (
-						<React.Fragment>
-							{data &&
-								data.length > 0 &&
-								data.map(({ recipe }, index) => (
-									<Card
-										key={index}
-										title={recipe.label}
-										imagesrc={recipe.image}
-										toptext={recipe.healthLabels[0]}
-										time={recipe.totalTime}
-									/>
-								))}
-							{count === 0 ? (
-								<Error message="Sorry Nothing found" />
-							) : (
-								<React.Fragment></React.Fragment>
-							)}
-							{error && <Error message={error} />}
-						</React.Fragment>
-					)}
+					<Suspense fallback={<Loader />}>
+						{count > 0 && data.length > 0 && <Category text="" />}
+						{data &&
+							data.length > 0 &&
+							data.map(({ recipe }, index) => (
+								<Cards
+									key={index}
+									title={recipe.label}
+									imagesrc={recipe.image}
+									toptext={recipe.healthLabels[0]}
+									time={recipe.totalTime}
+								/>
+							))}
+						{count === 0 ? (
+							<Error message="Sorry Nothing found" />
+						) : (
+							<React.Fragment></React.Fragment>
+						)}
+						{error && <Error message={error} />}
+					</Suspense>
 				</Flex>
 			</Layout>
 		);
