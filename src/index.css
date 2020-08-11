@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Metropolis';
+	src: url('./assets/Fonts/Metropolis/Metropolis-Regular.otf');
+}
+@font-face {
+	font-family: 'Metropolis Bold';
+	src: url('./assets/Fonts/Metropolis/Metropolis-Black.otf');
+}
