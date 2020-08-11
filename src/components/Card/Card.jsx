@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../components/UI/Button/Button";
-import image from "../../assets/Images/Img2.jpg";
 import heartIcon from "../../assets/Icons/feather-heart.png";
 import timeIcon from "../../assets/Icons/feather-clock.png";
 
@@ -54,11 +53,6 @@ const Container = styled.div`
 	border-top-right-radius: var(--border-radius);
 `;
 
-// const Image = styled.img`
-// 	width: ${(props) => props.width || "100%"};
-// 	height: 100%;
-// 	object-fit: cover;
-// `;
 
 const Grid = styled.div`
 	display: grid;

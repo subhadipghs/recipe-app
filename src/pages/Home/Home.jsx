@@ -1,14 +1,11 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Layout from "../../components/UI/Layout/Layout";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import Category from "../../components/Category/Category";
-import Card from "../../components/Card/Card";
 import Error from "../../components/Error/Error";
 import Loader from "../../components/Loader/Loader";
-import { fetchRecipeApi } from "../../redux/actions/recipe";
-import { bindActionCreators } from "redux";
 
 const Cards = React.lazy(() => import("../../components/Card/Card"));
 
@@ -23,8 +20,7 @@ const Flex = styled.div`
 
 class Home extends React.PureComponent {
 	render() {
-		const { data, loading, error, count, fetchDataFromApi } = this.props;
-		console.log("in parent", this.props);
+		const { data, error, count } = this.props;
 		return (
 			<Layout>
 				<Searchbar
@@ -46,7 +42,7 @@ class Home extends React.PureComponent {
 								/>
 							))}
 						{count === 0 ? (
-							<Error message="Sorry Nothing found" />
+							<Error message="Sorry Nothing found 💔" />
 						) : (
 							<React.Fragment></React.Fragment>
 						)}
@@ -59,7 +55,6 @@ class Home extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => {
-	// const { data, loading, error } = state.recipe;
 	return {
 		all: state,
 		data: state.recipe.data.hits,
@@ -68,9 +63,5 @@ const mapStateToProps = (state) => {
 		count: state.recipe.data.count,
 	};
 };
-
-// const mapDispatchToProps = (dispatch) => bindActionCreators({
-// 	fetchDataFromApi: (query) => fetchRecipeApi(query)
-// }, dispatch)
 
 export default connect(mapStateToProps, null)(Home);
