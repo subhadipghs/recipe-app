@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Layout from "../../components/UI/Layout/Layout";

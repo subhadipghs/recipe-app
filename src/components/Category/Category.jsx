@@ -27,11 +27,7 @@ const Category = ({ text }) => {
 		<Wrapper>
 			<div className="text">
 				search results
-<<<<<<< HEAD
-			</div   >
-=======
 			</div>
->>>>>>> dev
 			<h1 className="category__name">
 				{text}
 			</h1>
